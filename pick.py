@@ -7,7 +7,7 @@ import switch_vpn
 
 
 def main():
-    root = os.path.dirname(__file__) + 'confs' + os.sep
+    root = os.path.dirname(__file__) + os.sep + 'confs' + os.sep
 
     # parsing passed args for which vpn folder to use, and which country inside that folder to use
     if len(sys.argv) <3:

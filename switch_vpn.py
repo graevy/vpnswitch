@@ -8,7 +8,7 @@ def switch_vpn(vpn):
     # disable current wg interface if there is one
     if current_vpn:
         # wg output is "interface: conf_filename"
-        current_vpn = current_vpn.split()[1]
+        current_vpn = current_vpn[1]
         os.system("systemctl disable --now wg-quick@" + current_vpn)
 
 
