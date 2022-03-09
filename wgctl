@@ -6,12 +6,12 @@ import os
 def main():
     try:
         match sys.argv[1]:
-            case 'add':
+            case 'add': # TODO
                 import add
-                add.main(sys.argv[2])
-            case 'rm':
+                add.main(sys.argv[2:])
+            case 'rm': # TODO
                 import rm
-                rm.main(sys.argv[2])
+                rm.main(sys.argv[2:])
             case 'switch':
                 import pick
                 pick.main(sys.argv[2:])
