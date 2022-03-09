@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 
 def switch_vpn(conf_filename):
@@ -8,14 +9,14 @@ def switch_vpn(conf_filename):
     # fetch current wireguard systemd service for next step:
     current_service = os.popen("wg | head -n 1").read().rstrip().split()
     # wg output is "interface: conf_filename"
-    # so the split list is ["interface:",conf_filename]
+    # so the split list is ["interface:", conf_filename]
 
 
     # disable current wg service if there is one
     if current_service:
         current_service = "wg-quick@" + current_service[1]
-        os.system("systemctl disable --now " + current_service)
+        subprocess.run(("systemctl disable --now " + current_service).split())
 
 
     # enable and start new wg service from vpn
-    os.system("systemctl enable --now " + new_service)
+    subprocess.run(("systemctl enable --now " + new_service).split())
