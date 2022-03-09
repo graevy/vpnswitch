@@ -4,9 +4,6 @@ import sys
 import os
 
 def main():
-
-    root = os.path.dirname(__file__) + os.sep + 'vpns' + os.sep
-
     try:
         match sys.argv[1]:
             case 'add':
