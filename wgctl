@@ -1,0 +1,33 @@
+#!/usr/bin/python3
+
+import sys
+import os
+
+def main():
+
+    root = os.path.dirname(__file__) + os.sep + 'vpns' + os.sep
+
+    try:
+        match sys.argv[1]:
+            case 'add':
+                import add
+                add.main(sys.argv[2])
+            case 'rm':
+                import rm
+                rm.main(sys.argv[2])
+            case 'switch':
+                import pick
+                pick.main(sys.argv[2:])
+
+    except IndexError:
+        print(
+    r"""Usage: wgctl {add/rm/switch} VPN [random/country]
+        add                                     add a new vpn profile
+        rm                                      remove an existing vpn profile
+        switch                                  switch current vpn profile
+        """
+    )
+
+
+if __name__ == "__main__":
+    main()
