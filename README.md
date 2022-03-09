@@ -1,1 +1,1 @@
-by running e.g. ```sudo python pick.py france``` or ```sudo python random_vpn.py```, switch wireguard vpn location from wireguard configuration files (in wg's default storage dir, typically ```/etc/wireguard```)
+by running e.g. ```sudo wgctl switch france```, switch wireguard vpn location from wireguard configuration files (in wg's default storage dir, typically ```/etc/wireguard```)
