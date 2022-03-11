@@ -50,7 +50,7 @@ def main(args):
             vpn = vpn[aliases[location]]
         else:
             raise Exception(
-                f"{location} not understood. valid location args are:\n   {aliases.keys()}\n   {vpn.keys()}"
+                f"{location} not understood. valid location args are:\n    {aliases.keys()}\n    {vpn.keys()}"
                 )
     
     # at this point, if vpn is a host, there's nothing left to do
@@ -63,3 +63,54 @@ def main(args):
         vpn = random.choice(vpn)
 
     switch_vpn.switch_vpn(vpn)
+
+# this came to me while trying to sleep
+# i think it's a better implementation because the args can be anywhere,
+# and it might involve less overhead, idk
+# def foo(args):
+
+#     # get the vpn
+#     valid_vpns = frozenset(os.listdir(vpns))
+#     # valid_vpns = {vpn:os.listdir(vpns+vpn) for vpn in os.listdir(vpns)}
+#     for arg in args.copy():
+#         if arg in valid_vpns:
+#             vpn = arg
+#             args.remove(arg)
+#     else:
+#         with open(cfg + 'default_vpn.txt') as f:
+#             vpn = f.readline()
+
+#     # get the locations hashmap
+#     vpn_profiles = frozenset(os.listdir(vpns + vpn)) 
+#     s = vpns + vpn + os.sep
+
+#     for arg in args.copy():
+#         if arg in vpn_profiles:
+#             s += arg
+#             args.remove(arg)
+#     else:
+#         s += 'default.json'
+
+#     with open(s) as f:
+#         locations = json.load(f)
+#     with open(cfg + 'aliases.json') as f:
+#         aliases   = json.load(f)
+
+#     for arg in args.copy():
+#         if arg in locations:
+#             locations = location[arg]
+#             args.remove(arg)
+#         elif arg in aliases:
+#             locations = location[aliases[arg]]
+#             args.remove(arg)
+#         else:
+#             raise Exception(f"argument {arg} not understood.")
+    
+#     while isinstance(locations, dict):
+#         locations = random.choice(list(locations.values()))
+
+#     # if locations is a list, pick a random value
+#     if isinstance(locations, list):
+#         locations = random.choice(locations)
+
+#     switch_vpn.switch_vpn(locations)
