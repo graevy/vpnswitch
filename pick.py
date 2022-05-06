@@ -5,6 +5,9 @@ import random
 import switch_vpn
 
 
+# i discovered the argparse module a week after writing this. fml
+
+
 # this function can get called without any args, so most conditional logic
 # is determining how to interpret args
 def main(args):
